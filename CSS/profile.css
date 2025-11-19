@@ -1,0 +1,71 @@
+/*
+ * Arquivo: profile.css
+ * Descrição: Estilos personalizados para a página de Perfil do Usuário
+ * Complementa o tema Dark do Bootstrap 5.3.3
+ */
+
+/* 1. Estilos da Imagem de Perfil */
+.profile-pic-preview {
+    /* Define um tamanho fixo para a imagem (já configurado no HTML inline,
+       mas redefinimos para garantir consistência e sobrescrever qualquer padrão) */
+    width: 180px;
+    height: 180px;
+    /* Garante que a imagem cubra a área sem distorção */
+    object-fit: cover;
+    /* Opcional: Efeito de transição suave ao carregar/alterar a imagem */
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-pic-preview:hover {
+    /* Pequeno efeito de escala ao passar o mouse */
+    transform: scale(1.05);
+}
+
+/* 2. Estilos do Container da Foto */
+.profile-picture-container {
+    /* Centraliza o conteúdo (texto-align: center já faz isso, mas podemos ser explícitos) */
+    text-align: center;
+}
+
+/* Limita a largura do input de arquivo para que ele não ocupe toda a linha */
+.profile-picture-container .form-control {
+    /* Limita o tamanho do input do arquivo para não ser muito largo */
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Estilos do Card (Fundo escuro personalizado) */
+/* O card usa bg-dark-subtle no HTML, mas podemos refinar sua aparência */
+.card {
+    /* Adiciona um pequeno padding interno para espaço */
+    padding: 1.5rem;
+    /* Bordas mais arredondadas para um visual moderno */
+    border-radius: 1rem;
+    /* Cor de fundo para o tema escuro, um pouco mais clara que o body */
+    background-color: var(--bs-body-bg-darker);
+    /* Adiciona uma transição suave para as cores de fundo e sombra */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Se você precisar de um tom ligeiramente diferente para o dark-subtle: */
+:root, [data-bs-theme="light"] {
+    --bs-body-bg-darker: #f8f9fa; /* No modo claro, é apenas um cinza claro */
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg-darker: #212529; /* Um cinza bem escuro para o cartão */
+}
+
+
+/* 4. Estilos do Footer (Opcional: Ajuste de cor de links) */
+/* Garante que os links do rodapé fiquem visíveis no fundo escuro */
+.list-inline-item a.text-secondary {
+    color: #adb5bd !important; /* Cor cinza mais clara */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.list-inline-item a.text-secondary:hover {
+    color: var(--bs-primary) !important; /* Cor primária no hover */
+}
