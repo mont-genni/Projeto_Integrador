@@ -1,0 +1,411 @@
+/* ===================================
+   Estilos Personalizados - Tela Inicial
+   =================================== */
+
+/* Reset e Configurações Globais */
+:root {
+    --primary-color: #712cf9;
+    --secondary-color: #6c757d;
+    --dark-bg: #1a1a1a;
+    --light-text: #f8f9fa;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===================================
+   Header Styles
+   =================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all var(--transition-speed) ease;
+}
+
+header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+    position: relative;
+    transition: all var(--transition-speed) ease;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: var(--primary-color) !important;
+}
+
+/* ===================================
+   Carousel Styles
+   =================================== */
+#myCarousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 60vh;
+    min-height: 500px;
+    position: relative;
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-item svg {
+    filter: brightness(0.7);
+    transition: filter var(--transition-speed) ease;
+}
+
+.carousel-item:hover svg {
+    filter: brightness(0.5);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20%;
+    z-index: 10;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carousel-caption h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: all var(--transition-speed) ease;
+}
+
+.carousel-indicators button.active {
+    transform: scale(1.3);
+    background-color: var(--primary-color);
+}
+
+/* ===================================
+   Card Styles
+   =================================== */
+.row.mb-2 {
+    padding: 2rem 1rem;
+}
+
+.card-container {
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+}
+
+.card-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(113, 44, 249, 0.3) !important;
+}
+
+.card-container .stretched-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed) ease;
+}
+
+.card-container:hover .stretched-link {
+    color: var(--primary-color) !important;
+}
+
+.card-container:hover .bi {
+    animation: arrowMove 0.6s ease infinite;
+}
+
+@keyframes arrowMove {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* ===================================
+   Button Styles
+   =================================== */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+    border-radius: 25px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #5a1fd4);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a1fd4, var(--primary-color));
+}
+
+/* ===================================
+   Search Bar Styles
+   =================================== */
+.form-control {
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid transparent;
+    transition: all var(--transition-speed) ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(113, 44, 249, 0.3);
+    transform: scale(1.02);
+}
+
+/* ===================================
+   Theme Toggle Styles
+   =================================== */
+.bd-mode-toggle {
+    z-index: 1050;
+}
+
+.btn-bd-primary {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-bd-primary:hover {
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: 0 5px 20px rgba(113, 44, 249, 0.5);
+}
+
+/* ===================================
+   Footer Styles
+   =================================== */
+footer {
+    background: rgba(26, 26, 26, 0.95);
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer .nav-link {
+    transition: all var(--transition-speed) ease;
+}
+
+footer .nav-link:hover {
+    color: var(--primary-color) !important;
+    padding-left: 10px;
+}
+
+/* ===================================
+   Scroll Animations
+   =================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================
+   Loading Animation
+   =================================== */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(113, 44, 249, 0.3);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 50vh;
+        min-height: 350px;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+    
+    .carousel-caption {
+        bottom: 10%;
+        padding: 1rem;
+    }
+    
+    header {
+        position: relative;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 40vh;
+        min-height: 300px;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===================================
+   Utility Classes
+   =================================== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color), #5a1fd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-custom {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hover-lift {
+    transition: transform var(--transition-speed) ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
